@@ -19,53 +19,42 @@ let numPuffer = 0;
 fishBtn.addEventListener('click', fishBtnClicked);
 
 
-function catchFish(fish,fishIMG,fishHTML){
-  fish++
+function change(fish,fishIMG,fishHTML){
   fishHTML.innerHTML = fish;
   resultImg.src = `img/${fishIMG}.png`;
-  }
+}
+
+function catchFish(Cod,Salmon,Tropical){
+  let randNum = Math.random();
+    if (randNum < Cod) {
+      change(++numCod,"Raw-cod",numCodSpan)
+    } else if (randNum < Salmon) {
+      change(++numSalmon,"Raw-Salmon",numSalmonSpan)
+    } else if (randNum < Tropical) {
+      change(++numTropical,"Tropical-Fish",numTropicalSpan)
+    } else {
+      change(++numPuffer,"Pufferfish",numPufferSpan)
+    }
+  
+
+}
 
 // Event handler for fishBtn
 function fishBtnClicked() {
   // Check Selected Character
-  let character = charSelect.value;
+ let character = charSelect.value
 
   // Catch fish based on character
   if (character === 'steve') {
     // STEVE: Cod 70%, Salmon 20%, Tropical 5%, Puffer 5%
-    let randNum = Math.random();
-    if (randNum < 0.7) {
-      catchFish(numCod++,"Raw-cod",numCodSpan)
-    } else if (randNum < 0.9) {
-      catchFish(numSalmon++,"Raw-Salmon",numSalmonSpan)
-    } else if (randNum < 0.95) {
-      catchFish(numTropical++,"Tropical-Fish",numTropicalSpan)
-    } else {
-      catchFish(numPuffer++,"Pufferfish",numPufferSpan)
-    }
+    catchFish(0.7,0.9,0.95)
+   
   } else if (character === 'alex') {
     // ALEX: Cod 10%, Salmon 10%, Tropical 30%, Puffer 50%
-    let randNum = Math.random();
-    if (randNum < 0.1) {
-      catchFish(numCod++,"Raw-cod",numCodSpan)
-    } else if (randNum < 0.2) {
-      catchFish(numSalmon++,"Raw-Salmon",numSalmonSpan)
-    } else if (randNum < 0.5) {
-      catchFish(numTropical++,"Tropical-Fish",numTropicalSpan)
-    } else {
-      catchFish(numPuffer++,"Pufferfish",numPufferSpan)
-    }
+    catchFish(0.1,0.2,0.5)
   } else if (character === "villager"){
      //villager 25% for each
-    let randNum = Math.random();
-    if (randNum < 0.25) {
-      catchFish(numCod++,"Raw-cod",numCodSpan)
-    } else if (randNum < 0.5) {
-      catchFish(numSalmon++,"Raw-Salmon",numSalmonSpan)
-    } else if (randNum < 0.75) {
-      catchFish(numTropical++,"Tropical-Fish",numTropicalSpan)
-    } else {
-      catchFish(numPuffer++,"Pufferfish",numPufferSpan)
-    }
+     catchFish(0.25,0.5,0.75)
+    
  }
 }
